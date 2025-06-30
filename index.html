@@ -2,18 +2,21 @@
 <html>
 <head>
     <title>Заказ</title>
+    <meta charset="UTF-8">
 </head>
 <body>
     <h1>Добро пожаловать!</h1>
-    <button onclick="sendStart()">Заказать</button>
+    <button id="orderButton">Заказать</button>
 
     <script>
-        function sendStart() {
-            if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.sendData("start");
-            } else {
-                alert("Работает только внутри Telegram");
-            }
+        // Проверяем, запущено ли из Telegram
+        if (window.Telegram && window.Telegram.WebApp) {
+            const button = document.getElementById("orderButton");
+            button.addEventListener("click", () => {
+                window.Telegram.WebApp.sendData("start");  // Отправляем команду /start
+            });
+        } else {
+            document.body.innerHTML = "<p>Страница должна открываться через Telegram.</p>";
         }
     </script>
 </body>
