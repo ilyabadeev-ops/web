@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Заказ</title>
+</head>
+<body>
+    <h1>Добро пожаловать!</h1>
+    <button onclick="sendStart()">Заказать</button>
+
+    <script>
+        function sendStart() {
+            if (window.Telegram && window.Telegram.WebApp) {
+                window.Telegram.WebApp.sendData("start");
+            } else {
+                alert("Работает только внутри Telegram");
+            }
+        }
+    </script>
+</body>
+</html>
